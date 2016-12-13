@@ -1,0 +1,33 @@
+---
+lxc:
+  store: images
+  releases: debian/jessie
+  fingerprint: 9003a08ba310
+push:
+  -  - ./00_init.sh
+     - /root/
+  -  - ./10_install.sh
+     - /root/
+  -  - ./20_postinstall.sh
+     - /root/
+execute:
+  - chmod +x /root/00_init.sh
+  - chmod +x /root/10_install.sh
+  - chmod +x /root/20_postinstall.sh
+  - /root/00_init.sh
+  - /root/10_install.sh
+  - /root/20_postinstall.sh
+pull:
+  - /root/000_update.log
+  - /root/000_update.err
+  - /root/010_installtasksel.log
+  - /root/010_installtasksel.err
+  - /root/020_installbase.log
+  - /root/020_installbase.err
+  - /root/100_install.log
+  - /root/100_install.err
+  - /root/200_postinstall.log
+  - /root/200_postinstall.err
+  - /var/log/yunohost-installation.log
+analyze:
+  - ./analyze.sh
