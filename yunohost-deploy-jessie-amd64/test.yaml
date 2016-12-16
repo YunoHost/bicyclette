@@ -2,7 +2,7 @@
 lxc:
   store: images
   releases: debian/jessie
-  fingerprint: 9003a08ba310
+  arch: amd64
 push:
   -  - ./00_init.sh
      - /root/
@@ -24,10 +24,14 @@ pull:
   - /root/010_installtasksel.err
   - /root/020_installbase.log
   - /root/020_installbase.err
+  - /root/099_result
   - /root/100_install.log
   - /root/100_install.err
+  - /root/199_result
   - /root/200_postinstall.log
   - /root/200_postinstall.err
   - /var/log/yunohost-installation.log
+  - /root/299_result
 analyze:
   - ./analyze.sh
+  - ./make_json_report.py

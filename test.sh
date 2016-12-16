@@ -18,4 +18,4 @@ cd $TARGET
 $LXCTEST --logdir $LOG_DIR test.yaml
 
 cd ..
-./publish.sh
+./publish.py

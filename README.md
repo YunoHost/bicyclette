@@ -1,7 +1,5 @@
-Vindler
+Bicyclette
 =======
-
-> The one protecting against the wind
 
 Automatic tests of Yunohost deployment and features
 
@@ -23,6 +21,13 @@ apt install -y lxc lxd distro-info python3-pip python3-yaml git
 # Clone lxctest somewhere
 cd
 git clone https://github.com/alexAubin/lxctest/
+```
+
+For web-stuff
+
+```shell
+apt install -y python3-pip
+pip3 install ansi2html fabric 
 ```
 
 Usage
