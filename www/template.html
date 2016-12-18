@@ -24,13 +24,12 @@
     {% for report in data %}
     <div class="container">
         {% if loop.index == 1 %}
-        <h2>Latest test</h2>
-        <p>{{ report.date }} / Took {{ report.duration }} minutes </p>
+        <h2>Latest test / {{ report.date }}</h2>
         {% else %}
         <hr>
         <h3>{{ report.date }}</h3>
-        <p>Took {{ report.duration }} minutes </p>
         {% endif %}
+        <p>Took {{ report.duration }} minutes </p>
         <div class="panel-group" id="accordion-{{report.id}}" role="tablist" aria-multiselectable="true">
             <div class="panel panel-info">
             <div class="panel-heading" role="tab" id="headingmanager">
@@ -73,6 +72,8 @@
                 </div>
                 <div id="collapse-{{report.id}}-{{ step.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headin-{{report.id}}-{{ step.id }}">
                     <div class="panel-body">
+                        <p><b>Script : </b><a href="./logs/{{report.id}}/{{step.script}}">{{step.script}}</a></p>
+                        <p><b>Fulls logs available in </b><a href="./logs/{{report.id}}/">here</a></p>
                         <p><b>Result : </b>{{ step.result }}</p>
 {% if step.n_errors == 0 %}
                         <p><b>No warnings or errors found !</b></p>

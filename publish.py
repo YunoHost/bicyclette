@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
 import os
 import json
 import glob
 import sys
 import re
+import shutil 
 
 from jinja2 import Template
 from ansi2html import Ansi2HTMLConverter
@@ -62,6 +64,17 @@ if __name__ == '__main__':
             step["errors"] = [ re.sub(highlight_keywords, bcolors.FAIL+bcolors.BOLD+r'\1'+bcolors.ENDC, line, flags=re.I) for line in step["errors"] ]
 
         reports.append(j)
+    
+        # Copy logs ans scripts to public area
+
+        this_report_log_dir = os.path.dirname(glob.glob(log_dir+"/"+j["id"]+"/lxctest-*/*.log")[0])
+        this_report_public_log_dir = os.path.join(output_dir,"logs",j["id"])
+        shutil.rmtree(this_report_public_log_dir, ignore_errors = True)
+        shutil.copytree(this_report_log_dir, this_report_public_log_dir)
+        
+        for step in j["steps"] :
+            shutil.copyfile(os.path.join("./", j["type"],             step["script"]),
+                            os.path.join(this_report_public_log_dir,  step["script"]))
 
     # Generate the output using the template
 

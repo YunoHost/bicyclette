@@ -23,10 +23,11 @@ def main():
     summary = {
         "date": begin_time.strftime("%d/%m/%y at %H:%M"),
         "duration": duration, 
+        "type": "yunohost-deploy-jessie-amd64",
         "steps": [
-            {"id": "init",        "descr": "Container initialization"   },
-            {"id": "install",     "descr": "Yunohost installation"      },
-            {"id": "postinstall", "descr": "Yunohost post-installation" }
+            {"id": "init",        "descr": "Container initialization",  "script" : "00_init.sh"        },
+            {"id": "install",     "descr": "Yunohost installation",     "script" : "10_install.sh"     },
+            {"id": "postinstall", "descr": "Yunohost post-installation","script" : "20_postinstall.sh" }
             ]
     }
     

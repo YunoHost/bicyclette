@@ -1,7 +1,10 @@
 sleep 1
 LOG=/root/200_postinstall.log
 ERR=/root/200_postinstall.err
-sudo yunohost tools postinstall --domain plop.netlib.re --password yunohost --ignore-dyndns --debug 2> $ERR > $LOG
+
+cat /etc/yunohost/services.yml | tee -a $LOG
+
+sudo yunohost tools postinstall --domain plop.netlib.re --password yunohost --ignore-dyndns --debug 2> $ERR >> $LOG
 
 # Test yunohost is here
 if [ -z `yunohost domain list | grep plop.netlib.re` ];
