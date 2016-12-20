@@ -45,3 +45,10 @@ All files related to a given test should be in a dedicated folder. The main file
 describing the steps of your test should be `test.yaml`. You can push files to
 the container, execute commands, pull files (e.g. logs) and use scripts to 
 analyze them and produce reports.
+
+Cron job
+--------
+
+```
+0,15,30,45 * * * * root /home/bicyclette/cron.sh
+```

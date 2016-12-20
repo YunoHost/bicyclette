@@ -16,7 +16,7 @@ fi
 fi
 
 # Test yunohost is here
-if [ -z `which yunohost` ];
+if [ $? -ne 0 ];
 then
     echo "Failure" | tee /root/199_result
 else

@@ -49,7 +49,7 @@
             </div>
             </div>
             {% for step in report.steps %}
-            <div class="panel panel-{% if step.result == 'Success' %}{% if step.n_errors == 0 %}success{% else %}warning{% endif %}{% else %}error{% endif %}">
+            <div class="panel panel-{% if step.result == 'Success' %}{% if step.n_errors == 0 %}success{% else %}warning{% endif %}{% else %}danger{% endif %}">
                 <div class="panel-heading" role="tab" id="heading-{{report.id}}-{{ step.id }}">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" style="margin-right:10px;"
