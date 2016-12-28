@@ -10,13 +10,17 @@ push:
      - /root/
   -  - ./20_postinstall.sh
      - /root/
+  -  - ./30_basictests.sh
+     - /root/
 execute:
   - chmod +x /root/00_init.sh
   - chmod +x /root/10_install.sh
   - chmod +x /root/20_postinstall.sh
+  - chmod +x /root/30_basictests.sh
   - /root/00_init.sh
   - /root/10_install.sh
   - /root/20_postinstall.sh
+  - /root/30_basictests.sh
 pull:
   - /root/000_update.log
   - /root/000_update.err
@@ -32,6 +36,8 @@ pull:
   - /root/200_postinstall.err
   - /var/log/yunohost-installation.log
   - /root/299_result
+  - /root/300_basictests.log
+  - /root/399_result
 analyze:
   - ./analyze.sh
   - ./make_json_report.py

@@ -25,9 +25,10 @@ def main():
         "duration": duration, 
         "type": "yunohost-deploy-jessie-amd64",
         "steps": [
-            {"id": "init",        "descr": "Container initialization",  "script" : "00_init.sh"        },
-            {"id": "install",     "descr": "Yunohost installation",     "script" : "10_install.sh"     },
-            {"id": "postinstall", "descr": "Yunohost post-installation","script" : "20_postinstall.sh" }
+            {"id": "init",        "descr": "Container initialization",   "script" : "00_init.sh"        },
+            {"id": "install",     "descr": "Yunohost installation",      "script" : "10_install.sh"     },
+            {"id": "postinstall", "descr": "Yunohost post-installation", "script" : "20_postinstall.sh" },
+            {"id": "basictests",  "descr": "Basic tests",                "script" : "30_basictests.sh"  }
             ]
     }
     
