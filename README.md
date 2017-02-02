@@ -30,12 +30,61 @@ apt install -y python3-pip
 pip3 install ansi2html fabric 
 ```
 
+Configure the web stuff
+-----------------------
+
+I work with a symlink like :
+
+```shell
+ln -s /path/to/bicyclette/www /var/www/bicyclette
+```
+
+Install nginx and add the following configuration (replace `bicyclette.netlib.re` with your domain name) :
+
+```
+server 
+{
+    listen 80;
+    listen [::]:80;
+    server_name bicyclette.netlib.re;
+
+    access_log /var/log/nginx/bicyclette.netlib.re-access.log;
+    error_log /var/log/nginx/bicyclette.netlib.re-error.log;
+
+    location / 
+    {
+        alias /var/www/bicyclette/;
+        index index.html;
+
+        try_files $uri $uri/ index.html;
+    }
+    
+    location /logs 
+    { 
+		    alias /var/www/bicyclette/logs/;
+		    autoindex on;
+
+        types 
+        {
+            text/plain sh err log;
+        }
+	  }
+}
+```
+
+Reload nginx, and try to access your domain (after you ran at least one test)
+
 Usage
 -----
 
 Check the config at the beginning of `test.sh` is okay, then :
 ```shell
 ./test.sh test-name
+```
+
+Publishing to the web site is done automatically at the end of `test.sh`. If you want to manually re-publish, just run :
+```shell
+./publish.py
 ```
 
 Adding / configuring tests
