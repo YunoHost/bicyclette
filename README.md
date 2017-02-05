@@ -27,7 +27,7 @@ For web-stuff
 
 ```shell
 apt install -y python3-pip
-pip3 install ansi2html fabric 
+pip3 install ansi2html
 ```
 
 Configure the web stuff
